@@ -33,9 +33,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $ShowError = "Invaid credentials ";
     }
   }
-
-
-
 ?>
 
 <!doctype html>
@@ -74,8 +71,6 @@ if($ShowError){
     </div>';
 }
 ?>
-
-
 
       <?php 
         if(isset($_SESSION['status']) && $_SESSION != '')
