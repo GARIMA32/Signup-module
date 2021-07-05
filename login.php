@@ -2,15 +2,11 @@
 $login=false;
 $ShowError =false;
 $logged=false;
-
 session_start();
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    
     include('partials/dbconnect.php');
-
     $username = $_POST["username"];
     $password = $_POST["password"];
-  
       $sql = "select * from signup where username='$username'";
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
@@ -28,12 +24,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             }
           }          
         }
-    else{
-        $ShowError = "Invaid credentials ";
-    }
+        else{
+          $ShowError = "Invaid credentials ";
+        }
   }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
 <?php require 'partials/nav.php' ?>
-
 <?php
 if($login){
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -70,13 +64,13 @@ if($ShowError){
         if(isset($_SESSION['status']) && $_SESSION != '')
         {
             ?>
-    
+                                
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
               <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               </button>
             </div>
-                    
+
              <?php
                 unset($_SESSION['status']);
         }
@@ -115,7 +109,7 @@ if($ShowError){
              ?> 
 
         <form action="/signup-module/login.php" method="POST">
-        <div class="form-group col-md-6 ">
+            <div class="form-group col-md-6 ">
                 <label for="username">Username</label>
                 <input type="user" class="form-control" id="username" name="username" aria-describedby="user" placeholder="Enter your name">
                 <small id="user" class="form-text text-muted">We'll never share your username with anyone else.</small>
@@ -130,7 +124,6 @@ if($ShowError){
             <p class="mx-3 my-3">Not have an account? <a href="signup.php">Signup Here</a></p>
         </form>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
