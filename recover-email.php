@@ -2,23 +2,22 @@
 $ShowAlert=false;
 $ShowError =false;
 session_start();
-//include('signup.php');
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    
     include('partials/dbconnect.php');
     $email = $_POST["email"];
-    
     //check whether username exists or not 
-    $existsSql = "select * from signup where email='$email'";    
+    $existsSql = "select * from signup where email='$email'";
     $result = mysqli_query($conn, $existsSql);
     $numExistsRows = mysqli_num_rows($result);
     if($numExistsRows){
         $userdata = mysqli_fetch_array($result);
         $username= $userdata['username'];
         $token = $userdata['token'];
+
         $subject = "Password Reset";
         $body = "Hi, $username. Click here to reset your password http://localhost/signup-module/reset-password.php?token=$token";
         $sender_email = "From:chauhangarima525@gmail.com";
+
         if(mail($email, $subject, $body, $sender_email)){
             $_SESSION['status'] = "check your mail to reset your password $email";
             header('location:login.php');
@@ -43,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 <body>
 <?php require 'partials/nav.php' ?>
-
     <div  class="container my-4 offset-3" >
         <h1 class="mx-5" >Recover your account</h1>
         <form action="" method="POST">
@@ -55,7 +53,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <p class="mx-3 my-3">Already have an account? <a href="login.php">Login Here</a></p>
         </form>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
