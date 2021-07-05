@@ -25,9 +25,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             }
             else{
               $ShowError = "Invaid credentials ";
-          }
-          }
-          
+            }
+          }          
         }
     else{
         $ShowError = "Invaid credentials ";
@@ -42,10 +41,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>Log In</title>
 </head>
 <body>
@@ -53,7 +50,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 <?php
 if($login){
-
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success!</strong> You are logged in....
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -62,7 +58,6 @@ if($login){
     </div>';
 }
 if($ShowError){
-
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Error!</strong> '. $ShowError.' .
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -71,12 +66,11 @@ if($ShowError){
     </div>';
 }
 ?>
-
       <?php 
         if(isset($_SESSION['status']) && $_SESSION != '')
         {
             ?>
-                                
+    
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
               <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
